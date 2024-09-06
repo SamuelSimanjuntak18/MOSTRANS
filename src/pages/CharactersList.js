@@ -28,7 +28,7 @@ function CharactersList() {
   
     return (
       <Container fluid className="characters-list">
-        <h1 className="text-light text-center mb-4">Characters List</h1>
+        <h1 className="text-light text-center mb-4"> Characters List</h1>
         <div className="character-carousel">
           {data.characters.results.map(character => (
             <Link to={`/character/${character.id}`} className="character-link" key={character.id}>

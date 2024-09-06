@@ -1,16 +1,18 @@
 .characters-list {
-    padding: 20px;
-    background-color: #1e1e1e; 
+    padding: 30px;
+    background-color: #121212; /* Warna latar belakang yang lebih gelap */
     min-height: 100vh;
 }
 
 .characters-list h1 {
-    font-size: 2.5rem;
+    font-size: 3rem; /* Ukuran font yang lebih besar */
     font-weight: bold;
-    margin-bottom: 20px;
-    color: #e50914;
+    margin-bottom: 30px;
+    color: #ff4757; /* Warna yang lebih cerah */
+    text-align: center;
+    text-transform: uppercase; /* Huruf kapital untuk kesan tegas */
+    letter-spacing: 2px; /* Jarak antar huruf */
 }
-
 
 .loading-container, .error-container {
     display: flex;
@@ -20,47 +22,52 @@
 }
 
 .character-carousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Memperbesar ukuran card */
-    gap: 20px; /* Jarak antar item */
-    padding-bottom: 20px;
-    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 30px;
 }
 
 .character-link {
-    width: 100%; 
+    width: 250px;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.character-link:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .character-card {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    border-radius: 12px; /* Sudut membulat lebih besar */
-    padding: 20px; /* Tambahkan padding */
+    background: #1f1f1f; /* Warna latar belakang card */
+    border-radius: 20px; /* Sudut membulat lebih besar */
+    padding: 20px;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(9, 156, 38, 0.2); /* Bayangan yang lebih besar */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4); /* Bayangan yang lebih lembut dan lebih besar */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.character-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b6b, #f7f7f7);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .character-card img {
     border-radius: 50%;
-    margin-bottom: 15px; /* Jarak lebih besar */
-    width: 100px; /* Ukuran gambar lebih besar */
-    height: 100px;
+    margin-bottom: 15px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    box-shadow: 0 6px 15px rgba(7, 159, 47, 0.3); /* Bayangan pada gambar */
+    border: 5px solid #ff4757; /* Border gambar yang kontras */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Bayangan pada gambar */
 }
 
-.character-card h2 {
+.character-card h6 {
     font-size: 1.4rem; 
     margin: 10px 0;
     font-weight: bold;
@@ -69,7 +76,13 @@
 
 .character-card p {
     font-size: 1rem; 
-    color: #f8f8f8;
+    color: #dcdcdc; /* Warna teks lebih lembut */
+    margin: 5px 0;
+}
+
+.character-link:hover .character-card {
+    transform: scale(1.05);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.6); /* Bayangan lebih besar saat hover */
 }
 
 @media (max-width: 768px) {
@@ -78,11 +91,10 @@
     }
 
     .character-carousel {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Sesuaikan ukuran card untuk perangkat mobile */
+        justify-content: space-between;
     }
 
-    .character-card img {
-        width: 80px;
-        height: 80px;
+    .character-link {
+        width: 100%;
     }
 }
