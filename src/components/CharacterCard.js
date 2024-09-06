@@ -5,7 +5,7 @@ function CharacterCard({ character }) {
     <div className="card">
       <img src={character.image} alt={character.name} className="card-img-top" />
       <div className="card-body">
-        <h5 className="card-title">{character.name}</h5>
+        <h6 className="card-title">{character.name}</h6>
         <p className="card-text">Status: {character.status}</p>
         <p className="card-text">Species: {character.species}</p>
         {character.location && (
