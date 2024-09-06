@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import CharacterCard from '../components/CharacterCard';
 import { Spinner, Alert, Form, Button, Container, Row, Col } from 'react-bootstrap';
@@ -26,6 +26,7 @@ const GET_CHARACTER_BY_ID = gql`
 
 function DetailCharacter() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [location, setLocation] = useState('');
   const { loading, error, data } = useQuery(GET_CHARACTER_BY_ID, {
     variables: { id },
@@ -100,9 +101,17 @@ function DetailCharacter() {
                 onChange={(e) => setLocation(e.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" onClick={handleAssign} disabled={!location} block>
-              Assign to Location
-            </Button>
+            <div className="d-flex justify-content-between">
+              <Button variant="primary" onClick={handleAssign} disabled={!location}>
+                Assign to Location
+              </Button>
+              <Button
+                variant="info"
+                onClick={() => navigate('/location')}
+              >
+                Go to List
+              </Button>
+            </div>
           </Form>
         </Col>
       </Row>
