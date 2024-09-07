@@ -1,8 +1,7 @@
-// src/integration/AssignCharacterAndCheckLocation.test.js
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DetailCharacter from '../pages/DetailCharacter';
 import CharacterByLocation from '../pages/CharacterByLocation';
 import { GET_CHARACTER_BY_ID } from '../pages/DetailCharacter';
@@ -55,7 +54,9 @@ test('assign character and check if it appears in CharacterByLocation', async ()
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <MemoryRouter initialEntries={['/character/1']}>
-        <Route path="/character/:id" component={DetailCharacter} />
+        <Routes>
+          <Route path="/character/:id" element={<DetailCharacter />} />
+        </Routes>
       </MemoryRouter>
     </MockedProvider>
   );
